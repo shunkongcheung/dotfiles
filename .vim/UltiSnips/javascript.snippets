@@ -1,0 +1,57 @@
+snippet us "create useState template" !b
+import {useCallback, useMemo, useState} from "react"
+
+function use${1:Custom} (){
+	// props --------------------------------------------
+	// states -------------------------------------------
+	// methods ------------------------------------------
+	// life cycle ---------------------------------------
+	// return -------------------------------------------
+	return {}
+}
+
+export default use$1;
+endsnippet
+
+
+snippet rfc "create functional component with memo" !b
+import React, {memo} from "react"
+import PropTypes from "prop-types"
+
+function ${1:className} ($2){
+	${0}
+	return (<></>);
+}
+
+$1.propTypes = {
+	$3
+}
+export default memo($1)
+endsnippet
+
+snippet con "create container with routes" !b
+import React, { memo } from "react";
+import { Route, Switch } from "react-router-dom";
+
+import { $2 } from "../../base/ActionPrefixes"
+import FourOFour from "../../general/FourOFour";
+import ListView from "../../listView/ListView";
+
+function ${1:ViewName}ListView() {
+  return (
+    <ListView actionPrefix={${2:actionPrefix}}/>
+  );
+}
+
+export default memo(({ match }) => (
+  <Switch>
+    <Route
+      path={\`${match.url}/list/\`}
+      exact
+      component={$1ListView}
+    />
+    <Route path="*" component={FourOFour} />
+  </Switch>
+));
+
+endsnippet

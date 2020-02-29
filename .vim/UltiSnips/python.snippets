@@ -1,0 +1,67 @@
+snippet api "create apis template" !b
+from base.apis import (
+	MyCreateAPIView,
+	MyListAPIView,
+	MyObjectAPIView,
+)
+
+from .models import ${1:ModelName}
+from .serializers import $1Serializer
+
+
+function_name = "${2:function_name}"
+
+class $1CreateAPIView(MyCreateAPIView):
+    function_name = function_name
+    model = $1
+    serializer_class = $1Serializer
+
+class $1ListAPIView(MyListAPIView):
+    function_name = function_name
+    model = $1
+    serializer_class = $1Serializer
+
+
+class $1ObjectAPIView(MyObjectAPIView):
+    function_name = function_name
+    model = $1
+    serializer_class = $1Serializer
+
+endsnippet
+
+snippet ser "create serializers template" !b
+from base.apis import MyModelSerializer
+
+from .models import ${1:ModelName}
+
+class $1Serializer(MyModelSerializer):
+	class Meta:
+		model = $1
+		fields = []
+
+endsnippet
+
+snippet url "create urls template" !b
+from django.conf.urls import url
+
+from .apis import (
+    ${1:ModelName}CreateAPIView,
+    $1ListAPIView,
+    $1ObjectAPIView,
+)
+
+urlpatterns = [
+    url(r'^create/$',
+		$1CreateAPIView.as_view(),
+        name='$2-api-create'
+				),
+    url(r'^list/$',
+		$1ListAPIView.as_view(),
+		name='${2:function_name}-api-list'
+		),
+    url(r'^(?P<pk>[0-9, a-z]+)/$',
+        $1ObjectAPIView.as_view(),
+				name='$2-api-object'
+				),
+]
+endsnippet

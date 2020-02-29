@@ -1,0 +1,82 @@
+snippet us "create useState template" !b
+import {useCallback, useMemo, useState} from "react"
+
+function use${1:Custom} (){
+	const [${2:customState}, ${3:setCustomState}] = useState(${4:initialState});
+	return [$2, $3];
+}
+
+export default use$1;
+endsnippet
+
+snippet rrfc "create functional ro-store component with memo" !b
+import React, {memo} from "react"
+import styled from "styled-components"
+
+const Container = styled.div
+
+interface $1Props{
+
+}
+
+const ${1:className}:React.FC<$1Props> = ($2) => {
+	${0}
+	return (<Container></Container>);
+}
+
+export default memo($1)
+endsnippet
+
+
+
+snippet rfc "create functional component with memo" !b
+import React, {memo} from "react"
+
+import styled from "styled-components"
+
+const Container = styled.div
+
+interface $1Props{
+
+}
+
+function ${1:className} ($2:$1Props){
+	${0}
+	return (<></>);
+}
+
+export default memo($1)
+endsnippet
+
+snippet con "create container with routes" !b
+import React, { memo } from "react";
+import { Route, Switch } from "react-router-dom";
+
+import { $2 } from "../../base/ActionPrefixes"
+import FourOFour from "../../general/FourOFour";
+import ListView from "../../listView/ListView";
+
+function ${1:ViewName}ListView() {
+  return (
+    <ListView actionPrefix={${2:actionPrefix}}/>
+  );
+}
+
+export default memo(({ match }) => (
+  <Switch>
+    <Route
+      path={\`${match.url}/list/\`}
+      exact
+      component={$1ListView}
+    />
+    <Route path="*" component={FourOFour} />
+  </Switch>
+));
+
+endsnippet
+
+snippet in "create interface" !b
+interface I$1{
+
+}
+endsnippet
