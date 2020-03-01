@@ -46,7 +46,7 @@ set fileencoding=utf-8  " The encoding written to file.
 scriptencoding utf-8
 
 " open up Lexplore on startsup
-autocmd VimEnter * Lexplore | vertical resize 30
+autocmd VimEnter * Lexplore | vertical resize 40
 
 " if hidden is not set, TextEdit might fail.
 set hidden
