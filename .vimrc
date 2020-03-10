@@ -88,6 +88,9 @@ call plug#begin('~/.vim/plugged')
 	" asynchronous linting engine
 	Plug 'dense-analysis/ale'
 
+	" editor configuration
+	Plug 'editorconfig/editorconfig-vim'
+
 	" snippet
 	Plug 'SirVer/ultisnips'
 
@@ -112,6 +115,7 @@ let g:ale_fixers = {
 \   'scss': ['prettier'],
 \   'javascript': ['prettier', 'eslint'],
 \   'typescript': ['prettier', 'eslint'],
+\   'vue': ['prettier', 'eslint'],
 \ 	'python': ['autopep8',  'yapf'],
 \}
 let b:ale_linters = ['flake8', 'pylint', 'eslint']
