@@ -20,16 +20,19 @@ set showmatch
 set incsearch
 set nohlsearch
 
-" file system: nertree setting. tree list style
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
-autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+" " file system: nertree setting. tree list style
+" let g:netrw_altv=1
+" let g:netrw_liststyle=3
+" let g:netrw_banner=0
+" let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
+" autocmd FileType netrw setl bufhidden=wipe
+" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
-" file system: spliting to the right side
-set splitright
+" " file system: spliting to the right side
+" set splitright
+
+" " open up Lexplore on startsup
+" autocmd VimEnter * Lexplore | vertical resize 40
 
 " file system: find in command mode. Tab to autocomplete filename
 set path+=**
@@ -45,8 +48,6 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 scriptencoding utf-8
 
-" open up Lexplore on startsup
-autocmd VimEnter * Lexplore | vertical resize 40
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -71,6 +72,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
+	Plug 'vifm/vifm.vim'
 
 	" language server for code completion
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
