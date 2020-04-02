@@ -175,6 +175,11 @@ endfunction
 " vim-airline
 "" remove the filetype part
 let g:airline_section_x=''
+
+" vifm key binding
+nmap <silent> vv :VsplitVifm<CR>
+nmap <silent> vs :SplitVifm<CR>
+
 " =========================================================
 
 " ================= JAVASCRIPT ============================
