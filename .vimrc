@@ -189,7 +189,7 @@ function! ToggleNetrw()
 endfunction
 
 " Add your own mapping. For example:
-noremap <silent> <C-E> :call ToggleNetrw()<CR>
+noremap <silent> <C-X> :call ToggleNetrw()<CR>
 
 " vim-airline
 "" remove the filetype part
