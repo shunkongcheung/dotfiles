@@ -44,7 +44,7 @@ module.exports = {
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: "rgba(41, 42, 68, 0.75)",
+    backgroundColor: "rgba(41, 42, 68, 0.9)",
 
     // terminal selection color
     selectionColor: "rgba(248,28,229,0.3)",
@@ -75,21 +75,21 @@ module.exports = {
     // an array here instead of a color map object
     colors: {
       black: "#000000",
-      red: "#C51E14",
-      green: "#1DC121",
-      yellow: "#C7C329",
-      blue: "#0A2FC4",
-      magenta: "#C839C5",
-      cyan: "#20C5C6",
-      white: "#C7C7C7",
-      lightBlack: "#686868",
-      lightRed: "#FD6F6B",
-      lightGreen: "#67F86F",
-      lightYellow: "#FFFA72",
-      lightBlue: "#6A76FB",
-      lightMagenta: "#FD7CFC",
-      lightCyan: "#68FDFE",
-      lightWhite: "#FFFFFF"
+      red: "#dd7655",
+      green: "#04DBB4",
+      yellow: "#f2e7b7",
+      blue: "#7aa5ff",
+      magenta: "#be9bf8",
+      cyan: "#56d3c1",
+      white: "#e3e2e8",
+      lightBlack: "#666699",
+      lightRed: "#ff91cd",
+      lightGreen: "#00e9c0",
+      lightYellow: "#fefca8",
+      lightBlue: "#69bffa",
+      lightMagenta: "#c07ff8",
+      lightCyan: "#8bfce1",
+      lightWhite: "#f3f2f8"
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
