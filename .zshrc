@@ -113,3 +113,9 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/shun.cheung/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shun.cheung/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/shun.cheung/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/shun.cheung/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
