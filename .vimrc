@@ -137,7 +137,9 @@ hi Comment ctermfg=99AA00
 hi CursorLineNr ctermfg=Yellow
 
 " vim-fugitive setting
+if &diff
 set diffopt+=vertical
+endif
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
