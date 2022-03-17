@@ -48,13 +48,10 @@ function! ToggleNetrw()
 endfunction
 
 " Add your own mapping. For example:
-noremap <silent> <C-X> :call ToggleNetrw()<CR>
+noremap <silent> gx :call ToggleNetrw()<CR>
 
 " file system: spliting to the right side
 set splitright
-
-" open up Lexplore on startsup
-autocmd VimEnter * Lexplore | vertical resize 40
 
 " file system: find in command mode. Tab to autocomplete filename
 set path+=**
@@ -111,10 +108,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
-  " git
-  Plug 'tpope/vim-fugitive'
-  
-
+  	" git
+  	Plug 'tpope/vim-fugitive'
+	
 	" =========================================================
 
 call plug#end()
@@ -123,6 +119,11 @@ call plug#end()
 syntax on
 colorscheme onedark
 let g:airline_theme='simple'
+
+" movement
+nnoremap <silent> gw <C-w>
+nnoremap <silent> gj <C-d>
+nnoremap <silent> gk <C-u>
 
 " coc
 " Use <c-space> to trigger completion.
