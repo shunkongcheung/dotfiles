@@ -1,0 +1,8 @@
+oh-my-posh init pwsh --config C:\Users\shcheung\.M365Princess.omp.json | Invoke-Expression
+
+# Import-Module git-aliases -DisableNameChecking
+Import-Module posh-git
+
+Function cdNova {
+	cd ~/Documents/codes/WPA1UX/Client/NovaClient/Src
+}
