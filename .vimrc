@@ -162,9 +162,8 @@ function! s:git_ignore_check()
         let isdir = isdirectory(filename)
         let should_ignore = 0
 
-        " convert .\DirName into DirName"
-        " when path=.\DirName\**, running :find Filename wont show file at path .\DirName\SubDir\Filename.txt
-        " when path=DirName\**, running :find Filename will show file at path .\DirName\SubDir\Filename.txt
+        " to search file at .\DirName\SubDir\Filename.txt with :find
+        " path=DirName\** works, but path=.\DirName\** wont
         let filename_better = substitute(filename, '.\\', '', 'g') 
         if isdir == 1
             " running it on Windows. For Linux/Mac, might use '/**' instead
