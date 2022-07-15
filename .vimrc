@@ -152,3 +152,34 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions=['coc-tsserver', 'coc-eslint', 'coc-prettier']
+
+function! s:git_ignore_check()
+    let all_files = split(globpath('.', '*'), '\n')
+    let pathstring = ''
+    let igstring = ''
+    for filename in all_files
+        let isdir = isdirectory(filename)
+        let should_ignore = 0
+
+        let filename_better = substitute(filename, '.\\', '', 'g')
+        if isdir == 1
+            let filename_better .= '\\**'
+        endif
+
+        if isdir == 1
+            let gitignore_command = "git check-ignore " . filename
+            if system(gitignore_command) != ""
+                let should_ignore = 1
+            endif
+        endif
+
+        if should_ignore
+            let igstring .= ',' . filename_better
+        else
+            let pathstring .= ',' . filename_better
+        endif
+    endfor
+    execute "set wildignore+=".substitute(igstring, '^,', '', "g")
+    execute  "set path=".pathstring
+endfunction
+nnoremap <silent> H :call <SID>git_ignore_check()<CR>
