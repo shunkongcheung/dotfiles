@@ -154,19 +154,25 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 let g:coc_global_extensions=['coc-tsserver', 'coc-eslint', 'coc-prettier']
 
 function! s:git_ignore_check()
-    let all_files = split(globpath('.', '*'), '\n')
     let pathstring = ''
     let igstring = ''
-    for filename in all_files
+
+    " all files in current directory, non-recursive
+    for filename in split(globpath('.', '*'), '\n')
         let isdir = isdirectory(filename)
         let should_ignore = 0
 
-        let filename_better = substitute(filename, '.\\', '', 'g')
+        " convert .\DirName into DirName"
+        " when path=.\DirName\**, running :find Filename wont show file at path .\DirName\SubDir\Filename.txt
+        " when path=DirName\**, running :find Filename will show file at path .\DirName\SubDir\Filename.txt
+        let filename_better = substitute(filename, '.\\', '', 'g') 
         if isdir == 1
+            " running it on Windows. For Linux/Mac, might use '/**' instead
             let filename_better .= '\\**'
         endif
 
         if isdir == 1
+            " only run git check-ignore for directory
             let gitignore_command = "git check-ignore " . filename
             if system(gitignore_command) != ""
                 let should_ignore = 1
@@ -182,4 +188,6 @@ function! s:git_ignore_check()
     execute "set wildignore+=".substitute(igstring, '^,', '', "g")
     execute  "set path=".pathstring
 endfunction
+
+" hit capital H to run on current directory
 nnoremap <silent> H :call <SID>git_ignore_check()<CR>
