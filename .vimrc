@@ -21,40 +21,36 @@ set incsearch
 set nohlsearch
 
 " file system: nertree setting. tree list style
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_browse_split = 4
-let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
-autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+" nnoremap <silent> gx :NERDTreeToggle<CR>
+ " let g:netrw_altv=1
+ " let g:netrw_liststyle=3
+ " let g:netrw_banner=0
+ let g:netrw_browse_split=0
+ let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
+ " autocmd FileType netrw setl bufhidden=wipe
+ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
-let g:NetrwIsOpen=0
+ let g:NetrwIsOpen=0
 
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore | vertical resize 40
-    endif
-endfunction
+ function! ToggleNetrw()
+     if g:NetrwIsOpen
+         let i = bufnr("$")
+         while (i >= 1)
+             if (getbufvar(i, "&filetype") == "netrw")
+                 silent exe "bwipeout " . i
+             endif
+             let i-=1
+         endwhile
+         let g:NetrwIsOpen=0
+     else
+         let g:NetrwIsOpen=1
+         silent Explore
+     endif
+ endfunction
+ noremap <silent> gx :call ToggleNetrw()<CR>
 
-" Add your own mapping. For example:
-noremap <silent> gx :call ToggleNetrw()<CR>
-
-" file system: spliting to the right side
-set splitright
-
-" file system: find in command mode. Tab to autocomplete filename
-set path+=**
+" set splitright " file system: spliting to the right side
+set path+=** " file system: find in command mode. Tab to autocomplete filename
 set wildmenu
 
 " folding
@@ -84,41 +80,33 @@ set updatetime=300
 " for searching visually selected word
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" PLUGINS CONFIGURATION ======================================================
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-	" language server for code completion
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " language server for code completion
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  	" theme
-  	Plug 'joshdick/onedark.vim'
+  " theme
+  Plug 'joshdick/onedark.vim'
 
-	" commenting
-	Plug 'tpope/vim-commentary'
-	Plug 'jbgutierrez/vim-better-comments'
+  " commenting
+  Plug 'tpope/vim-commentary'
+  Plug 'jbgutierrez/vim-better-comments'
 
-	" editor configuration
-	Plug 'editorconfig/editorconfig-vim'
+  " editor configuration
+  Plug 'editorconfig/editorconfig-vim'
 
-	" syntax hiehglihting
-	Plug 'sheerun/vim-polyglot'
+  " syntax hiehglihting
+  Plug 'sheerun/vim-polyglot'
 
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+  " buffer
+  Plug 'ap/vim-buftabline'
 
-  	" git
-  	Plug 'tpope/vim-fugitive'
-	
-	" =========================================================
-
+  " git
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " color scheme: theme
 syntax on
 colorscheme onedark
-let g:airline_theme='simple'
 
 " movement
 nnoremap <silent> gw <C-w>
@@ -126,13 +114,6 @@ nnoremap <silent> gj <C-d>
 nnoremap <silent> gk <C-u>
 
 " coc
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -153,6 +134,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions=['coc-tsserver', 'coc-eslint', 'coc-prettier']
 
+" hit capital H to run on current directory
 function! s:git_ignore_check()
     let pathstring = ''
     let igstring = ''
@@ -188,5 +170,4 @@ function! s:git_ignore_check()
     execute  "set path=".pathstring
 endfunction
 
-" hit capital H to run on current directory
 nnoremap <silent> H :call <SID>git_ignore_check()<CR>
