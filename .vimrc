@@ -63,6 +63,7 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 scriptencoding utf-8
 
+set conceallevel=2 " folding markdown link
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -102,6 +103,9 @@ call plug#begin('~/.vim/plugged')
 
   " git
   Plug 'tpope/vim-fugitive'
+
+  " markdown
+  Plug 'preservim/vim-markdown'
 call plug#end()
 
 " color scheme: theme
